@@ -5,6 +5,7 @@ Création d'un objet
         botName: 'Timothy',
         botFeeling: 'neutral',
         isGreeted: false,
+        
 
         botRandomResponse: function(sentencesArray){
             var sentenceIndex =  Math.floor(Math.random() * (sentencesArray.length - 0));
