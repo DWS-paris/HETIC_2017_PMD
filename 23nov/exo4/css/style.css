@@ -44,12 +44,21 @@ section{
 }
 
 article {
-    padding: 1rem;
     margin-bottom: 1rem;
 }
 
 article p{
-    max-width: 80%;
+    width: 80%;
     background-color: #d2d2d2;
     border: .1rem solid grey;
+    padding: 1rem;
+}
+
+article::after{
+    content: '';
+    clear: both;
+}
+
+.userMessage p{
+    float: right;
 }
