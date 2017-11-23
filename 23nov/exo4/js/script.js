@@ -6,22 +6,42 @@ Création d'un objet
         botFeeling: 'neutral',
         isGreeted: false,
 
+        botRandomResponse: function(sentencesArray){
+            var sentenceIndex =  Math.floor(Math.random() * (sentencesArray.length - 0));
+            return sentencesArray[sentenceIndex];
+        },
+
         botResponse: function( messageParam ){
+            // Salutation
             if( 
                 messageParam.search('BONJOUR') != -1 ||
                 messageParam.search('SALUT') != -1 ||
                 messageParam.search('WESH') != -1
             ){
-                 // Réponse du Bot
-                messagesBox.innerHTML += '<article><p>Salut !</p></article>';
+                // Modifier la valeur de isGreeted
+                this.isGreeted = true;
+
+                // Réponse du Bot
+                messagesBox.innerHTML += '<article><p>'+ 
+                
+                this.botRandomResponse(this.botSentences.botSayHello)
+
+                +'</p></article>';
             };
 
+            // Q? = comment ça va ?
             if(
                 messageParam.search('VAS-TU') != -1 ||
-                messageParam.search('TU VAS') != -1
+                messageParam.search('TU VAS') != -1 
+                &&
+                this.isGreeted == true
             ){
-                 // Réponse du Bot
-                 messagesBox.innerHTML += '<article><p>Bien et toi ?</p></article>';
+                // Réponse du Bot
+                messagesBox.innerHTML += '<article><p>'+ 
+                
+                this.botRandomResponse(this.botSentences.botSayHow)
+
+                +'</p></article>';
             };
         },
 
@@ -31,14 +51,19 @@ Création d'un objet
                 'Hello',
                 'Bonjour',
                 'Ciao'
+            ],
+
+            botSayHow: [
+                'Je vais bien',
+                'Je suis un bot, alors je ne sais pas...',
+                'True'
             ]
         }
     };
 //
 
-console.log(
-    Math.floor(Math.random() * ((botBrain.botSentences.botSayHello.length - 1) - 0)) + 0
-);
+botBrain.botRandomResponse( botBrain.botSentences.botSayHello );
+
 
 
 
