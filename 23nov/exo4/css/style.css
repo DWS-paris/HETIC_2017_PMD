@@ -1,0 +1,43 @@
+/* 
+RESET
+*/
+    *{
+        /* Supprimer toutes les marges */
+        margin: 0;
+        padding: 0;
+
+        /* Intégrer les border et le padding dans la taille des balises */
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    html{
+        font-size: 62.5%; /* => 10px */
+    }
+
+    body{
+        font-size: 1.5rem; /* => 15px */
+    }
+/**/
+
+/* 
+Formulaire
+*/
+    form{
+        padding: 2rem;
+    }
+
+    input, button{
+        display: block;
+        width: 100%;
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+/**/
+
+section{
+    border: .1rem solid grey;
+    min-height: 20rem;
+    margin: 2rem;
+}

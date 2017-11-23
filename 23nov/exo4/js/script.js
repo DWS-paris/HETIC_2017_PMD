@@ -11,5 +11,3 @@ Création d'un objet
         }
     };
 //
-
-botBrain.botSayHello();
