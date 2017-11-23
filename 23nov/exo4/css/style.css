@@ -45,6 +45,7 @@ section{
 
 article {
     margin-bottom: 1rem;
+    min-height: 4rem;
 }
 
 article p{
