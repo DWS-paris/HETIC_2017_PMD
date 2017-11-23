@@ -42,3 +42,14 @@ section{
     margin: 2rem;
     padding: 2rem;
 }
+
+article {
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+article p{
+    max-width: 80%;
+    background-color: #d2d2d2;
+    border: .1rem solid grey;
+}

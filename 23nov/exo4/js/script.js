@@ -32,7 +32,7 @@ Capter l'événement 'submit' du formulaire
             console.log(userMessage.value);
 
             // Modifier le contenu HTML de la ballise messageBox
-            messagesBox.innerHTML += '<article class="userMessage">'+ userMessage.value + '</article>'
+            messagesBox.innerHTML += '<article class="userMessage"><p>'+ userMessage.value + '</p></article>'
         };
 
         // Vider la valeur de l'input
