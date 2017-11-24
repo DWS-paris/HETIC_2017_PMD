@@ -1,14 +1,24 @@
 /*
+Sélectionner les balises HTML en Javascript
+*/
+var chatBox = document.getElementById('chatBox');
+var userMessage = document.getElementById('userMessage');
+var messagesBox = document.getElementById('messagesBox');
+//
+
+
+/*
 Création de l'objet Bot
 */  
     var botBrain = {
         isGreeted: false,
+        messageLoading: '<aside class="lds-css ng-scope"> <div style="width:100%;height:100%" class="lds-dual-ring"> <div></div> <div></div> </div> </aside>',
 
         // Liste des réponses possibles
         sentences: {
             isNotGreeted: [
                 'Je crois que quelqu\'un me parle...',
-                'Ce qui est dit sur <a href="http://desencyclopedie.wikia.com/wiki/Guide_des_bonnes_mani%C3%A8res" target="_blank">ce site</a> est passionnant !',
+                'Ce qui est dit sur <a href="https://goo.gl/gdMyac" target="_blank">ce site</a> est passionnant !',
                 '"La vraie humanité consiste à dire bonjour à un sourd.", <em>Remy Donnadieu</em>',
                 'Il manque un petit quelque chose pour débuter une conversation...'
             ],
@@ -28,8 +38,8 @@ Création de l'objet Bot
             ],
 
             sayHow: [
-                'Très bien, mon programme s\'exécute à merveille !',
-                'Oui, oui, très bien, pour le moment mon code fonctionne correctement.',
+                'Je vais bien car mon programme s\'exécute à merveille !',
+                'Très bien, très bien, pour le moment mon code fonctionne correctement.',
                 'Tout va bien, sinon c\'est qu\'il y à un bug dans mon programmme !!',
                 'Tant que j\'ai de l\'electricité dans mes circruits tout va bien !'
             ],
@@ -43,13 +53,13 @@ Création de l'objet Bot
         },
         
         // Méthode pour définir une réponse aléatoire
-        botRandomResponse: function(sentencesArray){
+        randomResponse: function(sentencesArray){
             var sentenceIndex =  Math.floor(Math.random() * (sentencesArray.length));
             return sentencesArray[sentenceIndex];
         },
 
         // Méthode pour analyser les messages de l'utilisateur
-        botResponse: function( messageParam ){
+        analyzeSentences: function( messageParam ){
             // Vérifier si le Bot à été salué
             switch(this.isGreeted){
                 case false:
@@ -67,16 +77,16 @@ Création de l'objet Bot
 
                         // Le Bot di bonjour
                         messagesBox.innerHTML += '' +
-                        '<article><p>' + 
-                            this.botRandomResponse(this.sentences.sayHello) +
-                        '</p></article>';
+                        '<article class="botMessage"> <img src="./img/loading.svg" alt="loading">' +
+                            '<p>' + this.randomResponse(this.sentences.sayHello) + '</p>' +
+                        '</article>';
 
                     } else {
                         // Le Bot attend d'être salué
-                        messagesBox.innerHTML += ''+
-                        '<article><p>'+ 
-                            this.botRandomResponse(this.sentences.isNotGreeted) +
-                        '</p></article>';
+                        messagesBox.innerHTML += '' +
+                        '<article class="botMessage"> <img src="./img/loading.svg" alt="loading">' +
+                            '<p>' + this.randomResponse(this.sentences.isNotGreeted) + '</p>' +
+                        '</article>';
                     }
                 break;
 
@@ -92,9 +102,9 @@ Création de l'objet Bot
                     ) {
                         // Le Bot dit comment il va
                         messagesBox.innerHTML += ''+
-                        '<article><p>'+ 
-                            this.botRandomResponse(this.sentences.sayHow) +
-                        '</p></article>';
+                        '<article class="botMessage"> <img src="./img/loading.svg" alt="loading">' +
+                            '<p>' + this.randomResponse(this.sentences.sayHow) + '</p>' +
+                        '</article>';
 
                     } else if(
                         // Goodbye Bot!
@@ -110,32 +120,32 @@ Création de l'objet Bot
 
                         // Le Bot dit aurevoir
                         messagesBox.innerHTML += ''+
-                        '<article><p>'+ 
-                            this.botRandomResponse(this.sentences.sayGoodbye) +
-                        '</p></article>';
+                        '<article class="botMessage"> <img src="./img/loading.svg" alt="loading">' +
+                            '<p>' + this.randomResponse(this.sentences.sayGoodbye) + '</p>' +
+                        '</article>';
 
                     } else{
                         // Le Bot n'a pas compris
                         messagesBox.innerHTML += ''+
-                        '<article><p>'+ 
-                            this.botRandomResponse(this.sentences.doNotUnderstand) +
-                        '</p></article>';
+                        '<article class="botMessage"> <img src="./img/loading.svg" alt="loading">' +
+                            '<p>' + this.randomResponse(this.sentences.doNotUnderstand) + '</p>' +
+                        '</article>';
                     }
                 break;
             };
+
+            // Faire scroller la fenêtre
+            messagesBox.scrollTop = 1000;
+
+            // Masquer le loading et afficher le message du Bot
+            setTimeout(function(){
+                
+                document.querySelector('.botMessage:last-child img').style.display = 'none';
+                document.querySelector('.botMessage:last-child p').style.display = 'block';
+                
+            }, 1500)
         }
     };
-//
-
-
-
-
-/*
-Sélectionner les balises HTML en Javascript
-*/
-    var chatBox = document.getElementById('chatBox');
-    var userMessage = document.getElementById('userMessage');
-    var messagesBox = document.getElementById('messagesBox');
 //
 
 
@@ -157,11 +167,10 @@ Capter l'événement 'submit' du formulaire
             var theMessage = userMessage.value.toUpperCase();
 
             // Appeler la fonction du Bot pour afficher la réponse
-            botBrain.botResponse( theMessage );
+            botBrain.analyzeSentences( theMessage );
         };
 
         // Vider la valeur de l'input
-        userMessage.value = '';
-        
+        userMessage.value = ''; 
     });
 // 

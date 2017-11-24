@@ -40,16 +40,25 @@ Formulaire
 /* 
 Message box
 */
-    section{
+    section {
         border: .1rem solid grey;
         min-height: 20rem;
         margin: 2rem;
         padding: 2rem;
+        height: 80vh;
+        overflow: auto;
     }
 
     article {
         margin-bottom: 1rem;
         min-height: 4rem;
+        position: relative;
+    }
+
+    article img{
+        position: absolute;
+        width: 4rem;
+        left: 0;
     }
 
     article p{
@@ -57,6 +66,10 @@ Message box
         background-color: #d2d2d2;
         border: .1rem solid grey;
         padding: 1rem;
+    }
+
+    article.botMessage p {
+        display: none;
     }
 
     article::after{
