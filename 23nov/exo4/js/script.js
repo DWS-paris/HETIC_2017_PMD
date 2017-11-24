@@ -139,10 +139,8 @@ Création de l'objet Bot
 
             // Masquer le loading et afficher le message du Bot
             setTimeout(function(){
-                
                 document.querySelector('.botMessage:last-child img').style.display = 'none';
                 document.querySelector('.botMessage:last-child p').style.display = 'block';
-                
             }, 1500)
         }
     };
