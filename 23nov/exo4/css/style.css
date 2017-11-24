@@ -36,31 +36,37 @@ Formulaire
     }
 /**/
 
-section{
-    border: .1rem solid grey;
-    min-height: 20rem;
-    margin: 2rem;
-    padding: 2rem;
-}
 
-article {
-    margin-bottom: 1rem;
-    min-height: 4rem;
-}
+/* 
+Message box
+*/
+    section{
+        border: .1rem solid grey;
+        min-height: 20rem;
+        margin: 2rem;
+        padding: 2rem;
+    }
 
-article p{
-    width: 80%;
-    background-color: #d2d2d2;
-    border: .1rem solid grey;
-    padding: 1rem;
-}
+    article {
+        margin-bottom: 1rem;
+        min-height: 4rem;
+    }
 
-article::after{
-    content: '';
-    clear: both;
-}
+    article p{
+        width: 80%;
+        background-color: #d2d2d2;
+        border: .1rem solid grey;
+        padding: 1rem;
+    }
 
-.userMessage p{
-    float: right;
-    text-align: right;
-}
+    article::after{
+        content: '';
+        clear: both;
+    }
+
+    .userMessage p {
+        float: right;
+        text-align: right;
+        background-color: transparent;
+    }
+/**/
