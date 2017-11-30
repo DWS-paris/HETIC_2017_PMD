@@ -21,5 +21,5 @@ Modifier le DOM
 var pageTitle = document.querySelector("#pageTitle");
 
 // Modifier le contenu de la balise
-pageTitle.innerHTML = "Bonjour <em>" + username + "</em>";
+pageTitle.innerHTML = "\n        Bonjour <em>" + username + "</em>, vous avez " + (2017 - birthYear) + " ans\n    ";
 //
