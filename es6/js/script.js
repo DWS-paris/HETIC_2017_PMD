@@ -56,3 +56,44 @@ var optionalParameter = function optionalParameter() {
 optionalParameter();
 optionalParameter('Abdel');
 //
+
+/*
+Fonction avec REST parameter
+*/
+var restParam = function restParam(name) {
+    for (var _len = arguments.length, skills = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+        skills[_key - 1] = arguments[_key];
+    }
+
+    console.log(name);
+
+    // Le paramètre REST devient un tableau
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
+
+    try {
+        for (var _iterator = skills[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var item = _step.value;
+
+            console.log(item);
+        }
+    } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+    } finally {
+        try {
+            if (!_iteratorNormalCompletion && _iterator.return) {
+                _iterator.return();
+            }
+        } finally {
+            if (_didIteratorError) {
+                throw _iteratorError;
+            }
+        }
+    }
+};
+restParam('Sophie', 'html', 'css');
+restParam('John', 'cuisine');
+restParam('T\xE9o', 'Djing', 'patinette', 'vieux');
+//

@@ -49,3 +49,19 @@ Création d'une fonction
     optionalParameter()
     optionalParameter(`Abdel`)
 //
+
+/*
+Fonction avec REST parameter
+*/
+    const restParam = (name, ...skills) => {
+        console.log(name)
+        
+        // Le paramètre REST devient un tableau
+        for( let item of skills ){
+            console.log(item)
+        }
+    }
+    restParam(`Sophie`, `html`, `css`)
+    restParam(`John`, `cuisine`)
+    restParam(`Téo`, `Djing`, `patinette`, `vieux`)
+//
